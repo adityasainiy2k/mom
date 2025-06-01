@@ -18,4 +18,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           
-
+      - name: say hello3
+        run: echo 'say hello3'
+        
+  build-api:
+    needs: builds  
+    runs-on: ubuntu-latest
+    steps:
+      run: echo 'testing the needs build last step'
