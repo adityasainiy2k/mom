@@ -45,7 +45,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: check the donctainer created
-        run: check it out  
+        run: echo 'check the code'  
       
 
       
