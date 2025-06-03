@@ -20,7 +20,7 @@ jobs:
           
 
       - name: build2
-        run: nginx
+        run: docker run -itd nginx
 
 
       
