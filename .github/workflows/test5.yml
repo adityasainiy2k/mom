@@ -20,7 +20,7 @@ jobs:
           
 
       - name: build2
-        id: nginx
+        run: nginx
 
 
       
