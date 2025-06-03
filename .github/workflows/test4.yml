@@ -37,7 +37,7 @@ jobs:
           two: dont you like coding
 
       - name: build2
-        run: echo "so tell  me, "
+        run: echo "so tell  me, ${{env.hello}}"
 
   test:
     needs: build
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: deploy now
-        run: echo 'run the deploy now ${{env.hello}}'
+        run: echo 'run the deploy now '
 
   cd1:
    runs-on: ubuntu-latest
