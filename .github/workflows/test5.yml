@@ -41,7 +41,7 @@ jobs:
           docker run -itd -P httpd
         
   POST:
-    needs: NGINX-SETUP
+    needs: HTTPD-SETUP
     runs-on: windows-latest
     steps:
       - name: check the donctainer created
