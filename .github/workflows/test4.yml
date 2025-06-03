@@ -30,7 +30,7 @@ jobs:
           echo $night ', john'
           echo 'would you like' $boy
           echo 'i want to knoow' $one
-          echo "hello=how are you" >> $GITHUB.ENV
+          echo "hello=how are you" >> $GITHUB_ENV
           
         env:
           boy: handshake
