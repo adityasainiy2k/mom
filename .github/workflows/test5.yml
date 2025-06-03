@@ -27,6 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      
       - name: run nginx
-        run: docker run -itd nginx
-      run
+        id: nginx
+      
