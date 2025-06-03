@@ -58,6 +58,7 @@ jobs:
    steps:
      - name: cd independent
        run: echo 'run CD independtely'
+       run: echo "${{hello}}"
 
   cd2:
     runs-on: ubuntu-latest
