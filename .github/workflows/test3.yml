@@ -13,7 +13,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: build1
-        run: echo 'this is mmy first programe'
+        run: |
+          echo 'this is mmy first programe'
+          echo 'hello this ${{secrets.my_secret}}
 
       - name: build2
         run: echo 'this is second line'
