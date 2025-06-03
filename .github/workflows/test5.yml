@@ -20,16 +20,9 @@ jobs:
           
 
       - name: build2
-        run: echo 'this is second line'
+        id: nginx
 
-  NGINX:
-    needs: Login
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
+
       
-      - name: run nginx
-        id: nginx 
+
       
