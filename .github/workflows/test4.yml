@@ -37,7 +37,7 @@ jobs:
           two: dont you like coding
 
       - name: build2
-        run: echo "${{env.hello}}"
+        run: echo "so tell  me, ${{env.hello}}"
 
   test:
     needs: build
