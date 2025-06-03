@@ -18,10 +18,25 @@ jobs:
           username: ${{secrets.DOCKER_USER}}
           password: ${{secrets.DOCKER_PASSWORD}}
           
+  NGINX-SETUP:
+    needs: Login
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout 
+        uses: actions/checkout@v2
 
-      - name: build2
-        run: docker run -itd nginx
-
+      - name: nginx setup
+        run: |
+          docker run -itd -p nginx
+          docker run -itd httpd-latest
+        
+  POST:
+    needs: NGINX-SETUP
+    runs-on: windows-latest
+    steps:
+      - name: check the donctainer created
+        run: check it out  
+      
 
       
 
