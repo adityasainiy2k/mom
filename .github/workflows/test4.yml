@@ -30,14 +30,14 @@ jobs:
           echo $night ', john'
           echo 'would you like' $boy
           echo 'i want to knoow' $one
-          echo 'hello=how are you >>$GITHUB.ENV'
+          echo 'hello=how are you' >>$GITHUB.ENV
           
         env:
           boy: handshake
           two: dont you like coding
 
       - name: build2
-        run: echo 'this is second line,${{env.hello}}'
+        run: echo "this is second line,${{env.hello}}"
 
   test:
     needs: build
