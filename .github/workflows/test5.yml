@@ -21,3 +21,12 @@ jobs:
 
       - name: build2
         run: echo 'this is second line'
+
+  NGINX:
+    needs: Login
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: run nginx
+        run: docker run -itd nginx
+      run
