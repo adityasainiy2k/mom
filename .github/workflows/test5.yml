@@ -27,8 +27,18 @@ jobs:
 
       - name: nginx setup
         run: |
-          docker run -itd -p nginx
-          docker run -itd httpd-latest
+          docker run -itd -P nginx
+          
+  HTTPD-SETUP:
+    needs: NGINX-SETUP
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout 
+        uses: actions/checkout@v2
+
+      - name: nginx setup
+        run: |
+          docker run -itd -P httpd
         
   POST:
     needs: NGINX-SETUP
