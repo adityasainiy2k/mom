@@ -45,20 +45,21 @@ jobs:
     steps:
       - name: test 
         run:  echo 'run the test now'
+        
 
   deploy:
     needs: [build,test]
     runs-on: ubuntu-latest
     steps:
       - name: deploy now
-        run: echo 'run the deploy now'
+        run: echo 'run the deploy now ${{env.hello}}'
 
   cd1:
    runs-on: ubuntu-latest
    steps:
      - name: cd independent
        run: echo 'run CD independtely'
-       run: echo "${{hello}}"
+       
 
   cd2:
     runs-on: ubuntu-latest
