@@ -1,0 +1,66 @@
+name: test3
+
+on:
+  push:
+    branches: [main]
+env:
+  day: hello
+  night: how are you
+  week: whats your name
+  year: nice to meet you 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      one: what do you study
+      two: do you like coding
+      
+
+    steps:
+      - name: first
+        uses: actions/checkout@v2
+
+      - name: build1
+        run: |
+          echo 'this is mmy first programe'
+          echo 'hello this ${{secrets.my_secret}}'
+          echo  $week
+          echo $night ', john'
+          echo 'would you like' $boy
+          echo 'i want to knoow' $one
+          
+        env:
+          boy: handshake
+          two: dont you like coding
+
+      - name: build2
+        run: echo 'this is second line'
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: test 
+        run:  echo 'run the test now'
+
+  deploy:
+    needs: [build,test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy now
+        run: echo 'run the deploy now'
+
+  cd1:
+   runs-on: ubuntu-latest
+   steps:
+     - name: cd independent
+       run: echo 'run CD independtely'
+
+  cd2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run CD2
+        run: echo CD2
+      
