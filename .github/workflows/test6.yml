@@ -38,10 +38,5 @@ jobs:
       - name: build .Net
         uses: dotnet build --configuration Release --no-restore
 
-  Publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: publish .NET
-        uses: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}
+
           
