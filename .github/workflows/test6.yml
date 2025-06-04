@@ -15,22 +15,12 @@ jobs:
     steps:
       - name: setup .Net
         uses: actions/setup@-dotnet@v4
-        
 
-  Restore:
-    needs: install 
-    runs-on: ubuntu-latest
-    steps:
-            
       - name: restore dependies
         uses: dotnet restore
          with:
           dotnet.version: ${{env.DOTNET_VERSION}}
 
-  Build:
-    needs: Restore 
-    runs-on: ubuntu-latest
-    steps:
       - name: build .Net
         uses: dotnet build --configuration Release --no-restore
 
