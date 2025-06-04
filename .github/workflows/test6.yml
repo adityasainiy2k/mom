@@ -1,27 +1,30 @@
-name: Deploy .NET App to Azure
+name: .NET
+
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+
+env: 
+  DOTNET_VERSION: '5'
 
 jobs:
-  build-and-deploy:
+  install:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+      - name: setup .Net
+        uses: actions/setup@-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet.version: ${{env.DOTNET_VERSION}}
 
-      - name: Restore dependencies
+      - name: restore dependies
         run: dotnet restore
-
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-
-      - name: Publish
+         
+          
+      - name: build .Net
         run: dotnet publish -c Release -o ./publish
+
+
+
+          
