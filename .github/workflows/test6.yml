@@ -40,5 +40,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: publish .NET
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}
+        run: dotnet publish -c Release -o .github/mom
           
