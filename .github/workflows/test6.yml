@@ -42,5 +42,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: publish .NET
-        uses: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}
           
