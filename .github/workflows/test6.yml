@@ -26,5 +26,5 @@ jobs:
 
  
       - name: publish .NET
-        run: dotnet publish -c Release -o .github/workflows
+        run: dotnet publish -c Release -o ./publish
           
