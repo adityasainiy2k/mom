@@ -1,0 +1,43 @@
+name: .NET
+
+DOTNET_VERSION:'5'
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  INSTALL .NET:
+    setup .Net:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: setup .Net
+        uses: actions/setup@-dotnet@v4
+        with:
+          dotnet.version:${{env.DOTNET_VERSION}}
+
+  Restore .Net dependies:
+    needs: INSTALL .NET
+    runs-on: ubuntu-latest
+    steps:
+      - name: restore dependies
+        uses: dotnet restore
+
+  Build:
+    needs: Restore .Net dependies
+    runs-on: ubuntu-latest
+    steps:
+      - name: build .Net
+        uses: dotnet build --configuration Release --no-restore
+
+  Publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: publish .NET
+        uses: dotnet publish -c Release -o ./publish
+          
