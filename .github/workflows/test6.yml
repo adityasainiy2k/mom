@@ -25,11 +25,11 @@ jobs:
     needs: install 
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-        
+            
       - name: restore dependies
         uses: dotnet restore
+         with:
+          dotnet.version: ${{env.DOTNET_VERSION}}
 
   Build:
     needs: Restore 
