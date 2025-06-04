@@ -1,6 +1,6 @@
 name: .NET
 
-DOTNET_VERSION:'5'
+
 on:
   push:
     branches: [main]
