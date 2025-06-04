@@ -12,7 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: setup .Net
+      - name: checkout the code
+        uses: actions/checkput@v3
+        
+      - name: setup 
         uses: actions/setup@-dotnet@v3
         with:
           dotnet.version: ${{env.DOTNET_VERSION}}
