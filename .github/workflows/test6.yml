@@ -20,25 +20,13 @@ jobs:
         with:
           dotnet.version: ${{env.DOTNET_VERSION}}
 
-  Restore:
-    needs: install 
-    runs-on: ubuntu-latest
-    steps:
-      
       - name: restore dependies
         run: dotnet restore
 
-  Build:
-    needs: Restore 
-    runs-on: ubuntu-latest
-    steps:
       - name: build .Net
         run: dotnet build --configuration Release --no-restore
 
-  Publish:
-    needs: Build
-    runs-on: ubuntu-latest
-    steps:
+ 
       - name: publish .NET
         run: dotnet publish -c Release -o .github/workflows
           
