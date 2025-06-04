@@ -1,30 +1,46 @@
 name: .NET
+env:
+  DOTNET_VERSION: '5'
 
 
 on:
   push:
     branches: [main]
 
-env: 
-  DOTNET_VERSION: '5'
-
 jobs:
   install:
     runs-on: ubuntu-latest
 
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
       - name: setup .Net
         uses: actions/setup@-dotnet@v4
         with:
           dotnet.version: ${{env.DOTNET_VERSION}}
 
+  Restore:
+    needs: install 
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        
       - name: restore dependies
         run: dotnet restore
-         
-          
+
+  Build:
+    needs: Restore 
+    runs-on: ubuntu-latest
+    steps:
       - name: build .Net
-        run: dotnet publish -c Release -o ./publish
+        run: dotnet build --configuration Release --no-restore
 
-
-
+  Publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: publish .NET
+        uses: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}
           
