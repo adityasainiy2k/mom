@@ -1,6 +1,7 @@
 name: .NET
 
 
+
 on:
   push:
     branches: [main]
@@ -10,22 +11,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout the code
-        uses: actions/checkout@v3
-        
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: setup .Net
+        uses: actions/setup@-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
+  Restore:
+    needs: install 
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        
       - name: restore dependies
-        shell: bash
-        run: dotnet restore
+        uses: dotnet restore
 
+  Build:
+    needs: Restore 
+    runs-on: ubuntu-latest
+    steps:
       - name: build .Net
-        run: dotnet build --configuration Release --no-restore
+        uses: dotnet build --configuration Release --no-restore
 
- 
+  Publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: publish .NET
-        run: dotnet publish -c Release -o ./publish
+        uses: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}
           
