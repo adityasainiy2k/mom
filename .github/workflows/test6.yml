@@ -41,5 +41,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: publish .NET
-        run: dotnet publish -c Release -o /MOM/.github/workflows
+        run: dotnet publish -c Release -o /MOM/.github/workflows 
           
