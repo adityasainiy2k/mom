@@ -22,7 +22,7 @@ jobs:
         run: echo 'say hello3'
 
       - name: test the java code
-        run: /home/runner/work/mom/mom/pom.xml
+        run: /.pom.xml
         
   build-api:
     needs: builds  
